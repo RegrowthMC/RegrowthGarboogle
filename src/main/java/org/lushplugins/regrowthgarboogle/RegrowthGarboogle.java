@@ -1,8 +1,9 @@
 package org.lushplugins.regrowthgarboogle;
 
-import org.bukkit.plugin.java.JavaPlugin;
+import org.lushplugins.lushlib.utils.plugin.SpigotPlugin;
+import org.lushplugins.regrowthgarboogle.listener.NPCListener;
 
-public final class RegrowthGarboogle extends JavaPlugin {
+public final class RegrowthGarboogle extends SpigotPlugin {
     private static RegrowthGarboogle plugin;
 
     @Override
@@ -12,12 +13,7 @@ public final class RegrowthGarboogle extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Enable implementation
-    }
-
-    @Override
-    public void onDisable() {
-        // Disable implementation
+        registerListener(new NPCListener());
     }
 
     public static RegrowthGarboogle getInstance() {

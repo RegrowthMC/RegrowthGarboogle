@@ -12,15 +12,19 @@ repositories {
     mavenCentral()
     maven("https://oss.sonatype.org/content/groups/public/")
     maven("https://repo.papermc.io/repository/maven-public/") // Paper
+    maven("https://repo.lushplugins.org/snapshots/") // LushLib
+    maven("https://repo.fancyinnovations.com/releases") // FancyNPCs
 }
 
 dependencies {
     // Dependencies
     compileOnly("io.papermc.paper:paper-api:26.1.2.build.70-stable")
+    compileOnly("de.oliver:FancyNpcs:2.9.2")
 
     // Soft Dependencies
 
     // Libraries
+    implementation("org.lushplugins:LushLib:1.0.0")
 }
 
 java {
@@ -60,6 +64,7 @@ tasks {
         minecraftVersion("1.21.11")
 
         downloadPlugins {
+            modrinth("fancynpcs", "2.9.2.337")
             modrinth("viaversion", "5.7.1")
             modrinth("viabackwards", "5.7.1")
         }
