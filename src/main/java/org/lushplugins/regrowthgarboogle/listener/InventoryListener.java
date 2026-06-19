@@ -1,9 +1,13 @@
 package org.lushplugins.regrowthgarboogle.listener;
 
+import de.oliver.fancynpcs.api.FancyNpcsPlugin;
+import de.oliver.fancynpcs.api.Npc;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.HumanEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -13,6 +17,7 @@ import org.bukkit.inventory.ItemStack;
 import org.lushplugins.regrowthgarboogle.RegrowthGarboogle;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public class InventoryListener implements Listener {
@@ -66,5 +71,17 @@ public class InventoryListener implements Listener {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
             }
         }
+
+        RegrowthGarboogle.getInstance().getPacketHandler().ifPresent(handler -> {
+            Npc npc = FancyNpcsPlugin.get().getNpcManager().getNpc("Garboogle");
+            if (npc == null) {
+                return;
+            }
+
+            Location location = npc.getData().getLocation();
+            Collection<Player> viewers = location.getWorld().getNearbyPlayers(location, 10);
+            
+            handler.frogTongueAnimation(npc.getEntityId(), viewers);
+        });
     }
 }

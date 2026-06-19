@@ -14,6 +14,7 @@ repositories {
     maven("https://repo.papermc.io/repository/maven-public/") // Paper
     maven("https://repo.lushplugins.org/snapshots/") // LushLib
     maven("https://repo.fancyinnovations.com/releases") // FancyNPCs
+    maven("https://repo.codemc.io/repository/maven-releases/") // PacketEvents
 }
 
 dependencies {
@@ -22,6 +23,7 @@ dependencies {
     compileOnly("de.oliver:FancyNpcs:2.9.2")
 
     // Soft Dependencies
+    compileOnly("com.github.retrooper:packetevents-spigot:2.12.2")
 
     // Libraries
     implementation("org.lushplugins:LushLib:1.0.0")
@@ -67,6 +69,7 @@ tasks {
 
         downloadPlugins {
             modrinth("fancynpcs", "2.9.2.337")
+            modrinth("packetevents", "2.11.2+spigot")
             modrinth("viaversion", "5.7.1")
             modrinth("viabackwards", "5.7.1")
         }
