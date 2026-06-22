@@ -23,7 +23,7 @@ dependencies {
     compileOnly("de.oliver:FancyNpcs:2.9.2")
 
     // Soft Dependencies
-    compileOnly("com.github.retrooper:packetevents-spigot:2.12.2")
+    compileOnly("com.github.retrooper:packetevents-spigot:2.13.0")
 
     // Libraries
     implementation("org.lushplugins:LushLib:1.0.0")
